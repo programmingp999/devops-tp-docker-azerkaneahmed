@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: programmingp999/devops-tp-docker-azerkaneahmed
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build-and-push:
@@ -43,7 +43,7 @@ jobs:
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
-            type=sha,prefix={{branch}}-
+            type=sha,prefix=sha-
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4

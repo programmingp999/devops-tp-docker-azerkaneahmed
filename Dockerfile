@@ -2,7 +2,7 @@
 FROM nginx:1.27-alpine
 
 LABEL maintainer="TP DevOps"
-LABEL org.opencontainers.image.source="https://github.com/programmingp999/devops-tp-docker-azerkaneahmed"
+LABEL description="Application DevOps sécurisée sur port 8081"
 
 # Création d'un utilisateur non-privilégié
 RUN addgroup -S appgroup && \

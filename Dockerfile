@@ -2,19 +2,20 @@ FROM nginx:alpine
 
 # Métadonnées
 LABEL maintainer="TP DevOps"
-LABEL description="Application DevOps containerisée avec Nginx"
+LABEL description="Application DevOps optimisée"
 
-# Copier la configuration Nginx
+# On copie la configuration et les fichiers
+# Astuce : On essaie de limiter le nombre de couches
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copier les fichiers de l'application
 COPY src/ /usr/share/nginx/html/
 
-# Exposer le port 80
+# Supprimer les fichiers inutiles pour alléger l'image finale
+RUN rm -rf /usr/share/nginx/html/*.md
+
 EXPOSE 80
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3     CMD wget --quiet --tries=1 --spider http://localhost/ || exit 1
+# Health check optimisé (vérifie si le serveur répond bien)
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD wget -q --spider http://localhost/ || exit 1
 
-# Commande de démarrage
 CMD ["nginx", "-g", "daemon off;"]

@@ -60,7 +60,7 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
       - name: Upload results to GitHub
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         if: always() # Toujours uploader même si Trivy trouve des erreurs
         with:
           sarif_file: 'trivy-results.sarif'

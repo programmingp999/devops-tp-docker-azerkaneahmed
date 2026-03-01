@@ -1,0 +1,9 @@
+ignored:
+  - DL3018  # Ignore les alertes sur les versions non précisées dans Alpine
+  - DL3008  # Ignore les alertes sur les versions non précisées dans apt
+
+trustedRegistries:
+  - docker.io
+  - ghcr.io
+
+failure-threshold: warning

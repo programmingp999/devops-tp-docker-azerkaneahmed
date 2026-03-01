@@ -108,4 +108,8 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+<<<<<<< HEAD
           labels: ${{ steps.meta.outputs.labels }}
+=======
+          labels: ${{ steps.meta.outputs.labels }}
+>>>>>>> 19b14748b38b85af10688f3659ed273b21cad9b6
